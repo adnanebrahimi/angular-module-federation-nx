@@ -9,6 +9,7 @@
     "start": "ng serve",
     "start:one": "ng serve plugin-one --port 3000",
     "start:two": "ng serve plugin-two --port 3500",
+    "start:three": "ng serve three --port 5500",
     "start:shell": "ng serve shell -o",
     "start:all": "nx run-many --target=serve --all --parallel",
     "build": "ng build",

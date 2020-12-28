@@ -27,8 +27,8 @@ module.exports = {
 
         // For hosts (please adjust)
         remotes: {
-            "plugin-one": "plugin-one@http://localhost:3000/remoteEntry.js",
-            "plugin-two": "plugin-two@http://localhost:3500/remoteEntry.js",
+            "one": "one@http://localhost:3000/remoteEntry.js",
+            "two": "two@http://localhost:3500/remoteEntry.js",
             "three": "three@http://localhost:5500/remoteEntry.js",
 
         },

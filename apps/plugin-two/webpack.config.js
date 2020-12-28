@@ -9,7 +9,7 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "plugin-two"
+    uniqueName: "two"
   },
   optimization: {
     // Only needed to bypass a temporary bug
@@ -19,10 +19,10 @@ module.exports = {
     new ModuleFederationPlugin({
 
         // For remotes (please adjust)
-        name: "plugin-two",
+        name: "two",
         filename: "remoteEntry.js",
         exposes: {
-          './two': './apps/plugin-two/src/app/features/home-two/home-two.module.ts',
+          './Module': './apps/plugin-two/src/app/features/home-two/home-two.module.ts',
         },
 
         // For hosts (please adjust)

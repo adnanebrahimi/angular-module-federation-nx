@@ -1,2 +1,3 @@
-declare module 'plugin-one/one';
-declare module 'plugin-two/two';
+declare module 'one/Module';
+declare module 'two/Module';
+declare module 'three/Module';
