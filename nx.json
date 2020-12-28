@@ -29,6 +29,20 @@
     "shell-e2e": {
       "tags": [],
       "implicitDependencies": ["shell"]
+    },
+    "plugin-one": {
+      "tags": []
+    },
+    "plugin-one-e2e": {
+      "tags": [],
+      "implicitDependencies": ["plugin-one"]
+    },
+    "plugin-two": {
+      "tags": []
+    },
+    "plugin-two-e2e": {
+      "tags": [],
+      "implicitDependencies": ["plugin-two"]
     }
   }
 }
