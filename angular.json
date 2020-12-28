@@ -405,6 +405,141 @@
           }
         }
       }
+    },
+    "three": {
+      "projectType": "application",
+      "root": "apps/three",
+      "sourceRoot": "apps/three/src",
+      "prefix": "three",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/apps/three",
+            "index": "apps/three/src/index.html",
+            "main": "apps/three/src/main.ts",
+            "polyfills": "apps/three/src/polyfills.ts",
+            "tsConfig": "apps/three/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/three/src/favicon.ico",
+              "apps/three/src/assets"
+            ],
+            "styles": [
+              "apps/three/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/three/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/three/src/environments/environment.ts",
+                  "with": "apps/three/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "extraWebpackConfig": "apps/three/webpack.prod.config.js"
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "three:build",
+            "extraWebpackConfig": "apps/three/webpack.config.js",
+            "port": 5500
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "three:build:production",
+              "extraWebpackConfig": "apps/three/webpack.prod.config.js"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "three:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/three/tsconfig.app.json",
+              "apps/three/tsconfig.spec.json",
+              "apps/three/tsconfig.editor.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/three/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/three"
+          ],
+          "options": {
+            "jestConfig": "apps/three/jest.config.js",
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/three/webpack.config.js"
+          }
+        }
+      }
+    },
+    "three-e2e": {
+      "root": "apps/three-e2e",
+      "sourceRoot": "apps/three-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/three-e2e/cypress.json",
+            "tsConfig": "apps/three-e2e/tsconfig.e2e.json",
+            "devServerTarget": "three:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "three:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/three-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/three-e2e/**/*"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

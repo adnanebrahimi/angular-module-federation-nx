@@ -43,6 +43,13 @@
     "plugin-two-e2e": {
       "tags": [],
       "implicitDependencies": ["plugin-two"]
+    },
+    "three": {
+      "tags": []
+    },
+    "three-e2e": {
+      "tags": [],
+      "implicitDependencies": ["three"]
     }
   }
 }

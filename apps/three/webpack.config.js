@@ -9,7 +9,7 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "plugin-two"
+    uniqueName: "three"
   },
   optimization: {
     // Only needed to bypass a temporary bug
@@ -17,29 +17,30 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-
+      
         // For remotes (please adjust)
-        name: "plugin-two",
-        filename: "remoteEntry.js",
-        exposes: {
-          './two': './apps/plugin-two/src/app/features/home-two/home-two.module.ts',
-        },
-
+        // name: "three",
+        // filename: "remoteEntry.js",
+        // exposes: {
+        //     './Component': './apps/three/src/app/app.component.ts',
+        // },        
+        
         // For hosts (please adjust)
         // remotes: {
         //     "shell": "shell@http://localhost:4200/remoteEntry.js",
         //     "plugin-one": "plugin-one@http://localhost:3000/remoteEntry.js",
+        //     "plugin-two": "plugin-two@http://localhost:3500/remoteEntry.js",
 
         // },
 
         shared: {
-          "@angular/core": { singleton: true, strictVersion: true },
-          "@angular/common": { singleton: true, strictVersion: true },
+          "@angular/core": { singleton: true, strictVersion: true }, 
+          "@angular/common": { singleton: true, strictVersion: true }, 
           "@angular/router": { singleton: true, strictVersion: true },
 
           ...sharedMappings.getDescriptors()
         }
-
+        
     }),
     sharedMappings.getPlugin(),
   ],

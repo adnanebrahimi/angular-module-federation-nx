@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/shell',
     '<rootDir>/apps/plugin-one',
     '<rootDir>/apps/plugin-two',
+    '<rootDir>/apps/three',
   ],
 };
