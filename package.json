@@ -12,6 +12,7 @@
     "start:three": "ng serve three --port 5500",
     "start:shell": "ng serve shell -o",
     "start:all": "nx run-many --target=serve --all --parallel",
+    "build:all": "ng build --prod shell && ng build --prod plugin-one && ng build --prod plugin-two && ng build --prod three",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
@@ -47,6 +48,7 @@
     "@angular/platform-browser-dynamic": "^11.0.0",
     "@angular/router": "^11.0.0",
     "@nrwl/angular": "11.0.18",
+    "concurrently": "^5.3.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.2"
