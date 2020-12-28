@@ -8,7 +8,7 @@
       "prefix": "cac-pos",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/shell",
             "index": "apps/shell/src/index.html",
@@ -16,9 +16,15 @@
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-            "styles": ["apps/shell/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/shell/src/favicon.ico",
+              "apps/shell/src/assets"
+            ],
+            "styles": [
+              "apps/shell/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -46,18 +52,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "shell:build"
+            "browserTarget": "shell:build",
+            "extraWebpackConfig": "apps/shell/webpack.config.js",
+            "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "shell:build:production"
+              "browserTarget": "shell:build:production",
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
@@ -75,15 +85,21 @@
               "apps/shell/tsconfig.spec.json",
               "apps/shell/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/shell/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/shell/**/*"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/shell"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/shell"
+          ],
           "options": {
             "jestConfig": "apps/shell/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           }
         }
       }
@@ -109,8 +125,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/shell-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/shell-e2e/**/*"]
+            "tsConfig": [
+              "apps/shell-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/shell-e2e/**/*"
+            ]
           }
         }
       }
@@ -122,7 +143,7 @@
       "prefix": "one",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/plugin-one",
             "index": "apps/plugin-one/src/index.html",
@@ -134,8 +155,11 @@
               "apps/plugin-one/src/favicon.ico",
               "apps/plugin-one/src/assets"
             ],
-            "styles": ["apps/plugin-one/src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "apps/plugin-one/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/plugin-one/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -163,18 +187,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/plugin-one/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "plugin-one:build"
+            "browserTarget": "plugin-one:build",
+            "extraWebpackConfig": "apps/plugin-one/webpack.config.js",
+            "port": 3000
           },
           "configurations": {
             "production": {
-              "browserTarget": "plugin-one:build:production"
+              "browserTarget": "plugin-one:build:production",
+              "extraWebpackConfig": "apps/plugin-one/webpack.prod.config.js"
             }
           }
         },
@@ -192,15 +220,21 @@
               "apps/plugin-one/tsconfig.spec.json",
               "apps/plugin-one/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/plugin-one/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/plugin-one/**/*"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/plugin-one"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/plugin-one"
+          ],
           "options": {
             "jestConfig": "apps/plugin-one/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/plugin-one/webpack.config.js"
           }
         }
       }
@@ -226,8 +260,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/plugin-one-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/plugin-one-e2e/**/*"]
+            "tsConfig": [
+              "apps/plugin-one-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/plugin-one-e2e/**/*"
+            ]
           }
         }
       }
@@ -239,7 +278,7 @@
       "prefix": "two",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/plugin-two",
             "index": "apps/plugin-two/src/index.html",
@@ -251,8 +290,11 @@
               "apps/plugin-two/src/favicon.ico",
               "apps/plugin-two/src/assets"
             ],
-            "styles": ["apps/plugin-two/src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "apps/plugin-two/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/plugin-two/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -280,18 +322,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/plugin-two/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "plugin-two:build"
+            "browserTarget": "plugin-two:build",
+            "extraWebpackConfig": "apps/plugin-two/webpack.config.js",
+            "port": 3500
           },
           "configurations": {
             "production": {
-              "browserTarget": "plugin-two:build:production"
+              "browserTarget": "plugin-two:build:production",
+              "extraWebpackConfig": "apps/plugin-two/webpack.prod.config.js"
             }
           }
         },
@@ -309,15 +355,21 @@
               "apps/plugin-two/tsconfig.spec.json",
               "apps/plugin-two/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/plugin-two/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/plugin-two/**/*"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/plugin-two"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/plugin-two"
+          ],
           "options": {
             "jestConfig": "apps/plugin-two/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/plugin-two/webpack.config.js"
           }
         }
       }
@@ -343,15 +395,21 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/plugin-two-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/plugin-two-e2e/**/*"]
+            "tsConfig": [
+              "apps/plugin-two-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/plugin-two-e2e/**/*"
+            ]
           }
         }
       }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "b5f37c80-c9f0-4b04-a351-ce1f0d29f47c"
   },
   "schematics": {
     "@nrwl/workspace": {
