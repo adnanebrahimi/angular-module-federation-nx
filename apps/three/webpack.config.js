@@ -17,22 +17,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-
-        // For remotes (please adjust)
         name: "three",
-        filename: "remoteEntry.js",
+        filename: "three.js",
         exposes: {
             './Module': './apps/three/src/app/features/home-three/home-three.module.ts',
         },
-
-        // For hosts (please adjust)
-        // remotes: {
-        //     "shell": "shell@http://localhost:4200/remoteEntry.js",
-        //     "plugin-one": "plugin-one@http://localhost:3000/remoteEntry.js",
-        //     "plugin-two": "plugin-two@http://localhost:3500/remoteEntry.js",
-
-        // },
-
         shared: {
           "@angular/core": { singleton: true, strictVersion: true },
           "@angular/common": { singleton: true, strictVersion: true },

@@ -1,1 +1,10 @@
-<p>plugins-list works!</p>
+<div *ngIf='pluginResolver.isLoadingPlugins.getValue(); else loaded' class='plugin-loading'>
+  Loading plugins...
+</div>
+<ng-template #loaded>
+  <div class='plugins-list'>
+    <div [routerLink]='[i.remoteName]' class='plugin' *ngFor='let i of pluginResolver.configs'>
+      {{ i.name }}
+    </div>
+  </div>
+</ng-template>

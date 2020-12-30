@@ -197,7 +197,7 @@
           "options": {
             "browserTarget": "plugin-one:build",
             "extraWebpackConfig": "apps/plugin-one/webpack.config.js",
-            "port": 3000
+            "port": 4201
           },
           "configurations": {
             "production": {
@@ -332,7 +332,7 @@
           "options": {
             "browserTarget": "plugin-two:build",
             "extraWebpackConfig": "apps/plugin-two/webpack.config.js",
-            "port": 3500
+            "port": 4202
           },
           "configurations": {
             "production": {
@@ -467,7 +467,7 @@
           "options": {
             "browserTarget": "three:build",
             "extraWebpackConfig": "apps/three/webpack.config.js",
-            "port": 5500
+            "port": 4203
           },
           "configurations": {
             "production": {

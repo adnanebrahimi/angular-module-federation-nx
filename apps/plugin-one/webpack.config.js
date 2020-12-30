@@ -17,21 +17,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-
-        // For remotes (please adjust)
         name: "one",
-        filename: "remoteEntry.js",
+        filename: "one.js",
         exposes: {
             './Module': './apps/plugin-one/src/app/features/home-one/home-one.module.ts',
         },
-
-        // For hosts (please adjust)
-        // remotes: {
-        //     "shell": "shell@http://localhost:4200/remoteEntry.js",
-        //     "plugin-two": "plugin-two@http://localhost:4200/remoteEntry.js",
-
-        // },
-
         shared: {
           "@angular/core": { singleton: true, strictVersion: true },
           "@angular/common": { singleton: true, strictVersion: true },
