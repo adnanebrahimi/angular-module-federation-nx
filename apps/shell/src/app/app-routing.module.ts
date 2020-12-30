@@ -22,6 +22,10 @@ const routes: Routes = [
   //   loadChildren: () => import('three/Module').then((m) => m.HomeThreeModule),
   // },
   {
+    path: 'plugins',
+    loadChildren: () => import('./features/plugins-list/plugins-list.module').then(m => m.PluginsListModule),
+  },
+  {
     path: 'one',
     loadChildren: () =>
       loadRemoteModule({
