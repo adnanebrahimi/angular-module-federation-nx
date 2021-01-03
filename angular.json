@@ -16,13 +16,8 @@
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/shell/src/favicon.ico",
-              "apps/shell/src/assets"
-            ],
-            "styles": [
-              "apps/shell/src/styles.scss"
-            ],
+            "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
+            "styles": ["apps/shell/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/shell/webpack.config.js"
           },
@@ -85,17 +80,12 @@
               "apps/shell/tsconfig.spec.json",
               "apps/shell/tsconfig.editor.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/shell/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/shell/**/*"]
           }
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/shell"
-          ],
+          "outputs": ["coverage/apps/shell"],
           "options": {
             "jestConfig": "apps/shell/jest.config.js",
             "passWithNoTests": true,
@@ -125,13 +115,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/shell-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/shell-e2e/**/*"
-            ]
+            "tsConfig": ["apps/shell-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/shell-e2e/**/*"]
           }
         }
       }
@@ -155,9 +140,7 @@
               "apps/plugin-one/src/favicon.ico",
               "apps/plugin-one/src/assets"
             ],
-            "styles": [
-              "apps/plugin-one/src/styles.scss"
-            ],
+            "styles": ["apps/plugin-one/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/plugin-one/webpack.config.js"
           },
@@ -220,17 +203,12 @@
               "apps/plugin-one/tsconfig.spec.json",
               "apps/plugin-one/tsconfig.editor.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/plugin-one/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/plugin-one/**/*"]
           }
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/plugin-one"
-          ],
+          "outputs": ["coverage/apps/plugin-one"],
           "options": {
             "jestConfig": "apps/plugin-one/jest.config.js",
             "passWithNoTests": true,
@@ -260,13 +238,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/plugin-one-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/plugin-one-e2e/**/*"
-            ]
+            "tsConfig": ["apps/plugin-one-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/plugin-one-e2e/**/*"]
           }
         }
       }
@@ -290,9 +263,7 @@
               "apps/plugin-two/src/favicon.ico",
               "apps/plugin-two/src/assets"
             ],
-            "styles": [
-              "apps/plugin-two/src/styles.scss"
-            ],
+            "styles": ["apps/plugin-two/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/plugin-two/webpack.config.js"
           },
@@ -355,17 +326,12 @@
               "apps/plugin-two/tsconfig.spec.json",
               "apps/plugin-two/tsconfig.editor.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/plugin-two/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/plugin-two/**/*"]
           }
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/plugin-two"
-          ],
+          "outputs": ["coverage/apps/plugin-two"],
           "options": {
             "jestConfig": "apps/plugin-two/jest.config.js",
             "passWithNoTests": true,
@@ -395,13 +361,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/plugin-two-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/plugin-two-e2e/**/*"
-            ]
+            "tsConfig": ["apps/plugin-two-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/plugin-two-e2e/**/*"]
           }
         }
       }
@@ -421,13 +382,8 @@
             "polyfills": "apps/three/src/polyfills.ts",
             "tsConfig": "apps/three/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/three/src/favicon.ico",
-              "apps/three/src/assets"
-            ],
-            "styles": [
-              "apps/three/src/styles.scss"
-            ],
+            "assets": ["apps/three/src/favicon.ico", "apps/three/src/assets"],
+            "styles": ["apps/three/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/three/webpack.config.js"
           },
@@ -490,17 +446,12 @@
               "apps/three/tsconfig.spec.json",
               "apps/three/tsconfig.editor.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/three/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/three/**/*"]
           }
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/three"
-          ],
+          "outputs": ["coverage/apps/three"],
           "options": {
             "jestConfig": "apps/three/jest.config.js",
             "passWithNoTests": true,
@@ -530,13 +481,34 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
+            "tsConfig": ["apps/three-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/three-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "weather": {
+      "projectType": "library",
+      "root": "libs/weather",
+      "sourceRoot": "libs/weather/src",
+      "prefix": "cac-pos",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
             "tsConfig": [
-              "apps/three-e2e/tsconfig.e2e.json"
+              "libs/weather/tsconfig.lib.json",
+              "libs/weather/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/three-e2e/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/weather/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/weather"],
+          "options": {
+            "jestConfig": "libs/weather/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

@@ -3,18 +3,22 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
+    "outDir": "./dist/out-tsc",
     "declaration": false,
+    "downlevelIteration": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "module": "ES2020",
+    "lib": ["es2018", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@pos/weather": ["libs/weather/src/index"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
