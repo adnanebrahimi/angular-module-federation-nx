@@ -50,9 +50,6 @@
     "three-e2e": {
       "tags": [],
       "implicitDependencies": ["three"]
-    },
-    "weather2": {
-      "tags": []
     }
   }
 }
