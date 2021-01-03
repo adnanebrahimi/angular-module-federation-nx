@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { WeatherModule } from '@pos/weather';
 
 
 @NgModule({
@@ -11,7 +10,6 @@ import { WeatherModule } from '@pos/weather';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    WeatherModule
   ]
 })
 export class HomeModule { }

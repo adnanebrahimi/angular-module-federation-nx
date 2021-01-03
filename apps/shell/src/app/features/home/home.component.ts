@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '@pos/weather';
 
 @Component({
   selector: 'cac-pos-home',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public weatherService: WeatherService) { }
 
   ngOnInit(): void {
   }
-
+  updateClicked() {
+    this.weatherService.updateWeatherStatus('Cold');
+  }
 }

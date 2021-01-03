@@ -1,1 +1,4 @@
-<cac-pos-weather></cac-pos-weather>
+<div class='box'>
+  <p>Today weather is {{weatherService.weather | async}}</p>
+  <button (click)='updateClicked()'>Update</button>
+</div>
