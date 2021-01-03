@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '@pos/weather';
+import { Weather2Service } from '@cac-pos/weather2';
 
 @Component({
   selector: 'two-home-two',
@@ -8,7 +8,7 @@ import { WeatherService } from '@pos/weather';
 })
 export class HomeTwoComponent implements OnInit {
 
-  constructor(public weatherService: WeatherService) { }
+  constructor(public weatherService: Weather2Service) { }
 
   ngOnInit(): void {
   }

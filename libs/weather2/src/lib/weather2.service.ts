@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherService {
+export class Weather2Service {
   private weather$ = new BehaviorSubject<string>('Warm');
   constructor() { }
   updateWeatherStatus(weather: string) {

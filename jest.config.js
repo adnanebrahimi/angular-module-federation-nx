@@ -4,6 +4,6 @@ module.exports = {
     '<rootDir>/apps/plugin-one',
     '<rootDir>/apps/plugin-two',
     '<rootDir>/apps/three',
-    '<rootDir>/libs/weather',
+    '<rootDir>/libs/weather2',
   ],
 };

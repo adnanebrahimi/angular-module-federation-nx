@@ -17,12 +17,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pos/weather": ["libs/weather/src/index"]
+      "@cac-pos/weather2": ["libs/weather2/src/index.ts"]
     }
   },
-  "include": [
-    "src/**/*.d.ts",
-    "libs/**/index.ts"
-  ],
+  "include": ["src/**/*.d.ts", "libs/**/index.ts"],
   "exclude": ["node_modules", "tmp"]
 }

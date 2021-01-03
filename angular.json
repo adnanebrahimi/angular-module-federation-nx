@@ -487,27 +487,39 @@
         }
       }
     },
-    "weather": {
+    "weather2": {
       "projectType": "library",
-      "root": "libs/weather",
-      "sourceRoot": "libs/weather/src",
+      "root": "libs/weather2",
+      "sourceRoot": "libs/weather2/src",
       "prefix": "cac-pos",
       "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/weather2/tsconfig.lib.json",
+            "project": "libs/weather2/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/weather2/tsconfig.lib.prod.json"
+            }
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/weather/tsconfig.lib.json",
-              "libs/weather/tsconfig.spec.json"
+              "libs/weather2/tsconfig.lib.json",
+              "libs/weather2/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/weather/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/weather2/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/weather"],
+          "outputs": ["coverage/libs/weather2"],
           "options": {
-            "jestConfig": "libs/weather/jest.config.js",
+            "jestConfig": "libs/weather2/jest.config.js",
             "passWithNoTests": true
           }
         }
