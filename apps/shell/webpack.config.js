@@ -5,7 +5,7 @@ const path = require("path");
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
-  ['@cac-pos/weather2']);
+  ['@cac-pos/weather']);
 
 module.exports = {
   output: {

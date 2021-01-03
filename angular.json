@@ -486,8 +486,33 @@
           }
         }
       }
+    },
+    "weather": {
+      "projectType": "library",
+      "root": "libs/weather",
+      "sourceRoot": "libs/weather/src",
+      "prefix": "cac-pos",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/weather/tsconfig.lib.json",
+              "libs/weather/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/weather/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/weather"],
+          "options": {
+            "jestConfig": "libs/weather/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
-
   },
   "cli": {
     "defaultCollection": "@nrwl/angular",
