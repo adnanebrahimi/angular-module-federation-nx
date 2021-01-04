@@ -53,6 +53,13 @@
     },
     "weather": {
       "tags": []
+    },
+    "vue-shell": {
+      "tags": []
+    },
+    "vue-shell-e2e": {
+      "tags": [],
+      "implicitDependencies": ["vue-shell"]
     }
   }
 }
