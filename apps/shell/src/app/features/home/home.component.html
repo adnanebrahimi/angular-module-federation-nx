@@ -1,1 +1,15 @@
-<p>home works!</p>
+<style>
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid black;
+  }
+</style>
+
+<div class='box'>
+  <p>Today weather is {{weatherService.weather | async}}</p>
+  <button (click)='updateClicked()'>Update</button>
+</div>

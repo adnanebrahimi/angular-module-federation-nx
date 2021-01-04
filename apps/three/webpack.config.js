@@ -5,10 +5,11 @@ const path = require("path");
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
-  [/* mapped paths to share */]);
+  ['@cac-pos/weather']);
 
 module.exports = {
   output: {
+    chunkFilename: '[name]-[contenthash].js',
     uniqueName: "three"
   },
   optimization: {
