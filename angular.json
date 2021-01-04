@@ -130,7 +130,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/apps/plugin-one",
+            "outputPath": "dist/apps/pluginOne",
             "index": "apps/plugin-one/src/index.html",
             "main": "apps/plugin-one/src/main.ts",
             "polyfills": "apps/plugin-one/src/polyfills.ts",
@@ -253,7 +253,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/apps/plugin-two",
+            "outputPath": "dist/apps/pluginTwo",
             "index": "apps/plugin-two/src/index.html",
             "main": "apps/plugin-two/src/main.ts",
             "polyfills": "apps/plugin-two/src/polyfills.ts",

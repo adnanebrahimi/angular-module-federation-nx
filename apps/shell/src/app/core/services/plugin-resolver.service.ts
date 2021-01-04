@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PluginsConfig } from '../configs/plugins.config';
+import { PluginsConfig } from '../../../configs/plugins.config';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import PluginsUtility from '../utils/plugins.utility';
 import { Router, Routes } from '@angular/router';
@@ -22,16 +22,19 @@ export class PluginResolverService {
     for (const i of PluginsConfig) {
       try {
         const module = await loadRemoteModule(PluginsUtility.convertToRemoteModuleOptions(i));
-        if (!this.loadedPlugins[i.remoteName]) {
-          this.loadedPlugins[i.remoteName] = module;
-          this.loadedConfigs.push(i);
-        }
+        this.checkEntries(module, i);
       } catch (e) {
         console.error(`Plugin "${i.name}" not found`, e);
       }
     }
     this._isLoadingPlugins.next(false);
     this._isLoaded.next(true);
+  }
+  checkEntries(module: any, config: PluginsInterface) {
+    if (!this.loadedPlugins[config.remoteName]) {
+      this.loadedPlugins[config.remoteName] = module;
+      this.loadedConfigs.push(config);
+    }
   }
   buildRoutes(currentPath: string, router: Router) {
     // const pluginRoutes: Routes = this.loadedConfigs.map(i => ({

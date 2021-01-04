@@ -21,7 +21,7 @@ module.exports = {
         name: "three",
         filename: "three.js",
         exposes: {
-            './Module': './apps/three/src/app/features/home-three/home-three.module.ts',
+            './three': './apps/three/src/app/features/home-three/home-three.module.ts',
         },
         shared: {
           "@angular/core": { singleton: true, strictVersion: true },

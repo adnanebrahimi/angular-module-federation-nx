@@ -5,9 +5,9 @@ import { environment } from '../../../environments/environment';
 export default class PluginsUtility {
   static convertToRemoteModuleOptions(plugin: PluginsInterface): LoadRemoteModuleOptions {
     return {
-      exposedModule: plugin.exposedModule,
-      remoteEntry: environment.production ? ('./plugins/' + plugin.remoteFileName) :
-        (`http://${window.location.hostname}:${plugin.remotePort}/` + (plugin.remoteFileName ?? 'remoteEntry.js')),
+      exposedModule: './' + plugin.remoteName,
+      remoteEntry: environment.production ? `./plugins/${plugin.remoteName}/${plugin.remoteName}.js` :
+        `http://${window.location.hostname}:${plugin.remotePort}/${plugin.remoteFileName ?? 'remoteEntry.js'}`,
       remoteName: plugin.remoteName,
     };
   }

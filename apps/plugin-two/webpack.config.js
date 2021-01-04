@@ -10,7 +10,7 @@ sharedMappings.register(
 module.exports = {
   output: {
     chunkFilename: '[name]-[contenthash].js',
-    uniqueName: "two"
+    uniqueName: "pluginTwo"
   },
   optimization: {
     // Only needed to bypass a temporary bug
@@ -18,10 +18,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        name: "two",
-        filename: "two.js",
+        name: "pluginTwo",
+        filename: "pluginTwo.js",
         exposes: {
-          './Module': './apps/plugin-two/src/app/features/home-two/home-two.module.ts',
+          './pluginTwo': './apps/plugin-two/src/app/features/home-two/home-two.module.ts',
         },
         shared: {
           "@angular/core": { singleton: true, strictVersion: true },
