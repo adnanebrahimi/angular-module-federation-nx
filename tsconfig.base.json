@@ -1,28 +1,25 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
+    "baseUrl": ".",
     "outDir": "./dist/out-tsc",
+    "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "module": "ESNext",
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "paths": {
-      "@pos/weather": ["libs/weather/src/index"]
-    }
-  },
-  "include": [
-    "src/**/*.d.ts",
-    "libs/**/index.ts"
-  ],
-  "exclude": ["node_modules", "tmp"]
+      "@pos/weather": [
+        "libs/weather/src/index"
+      ]
+    },
+    "rootDir": "."
+  }
 }

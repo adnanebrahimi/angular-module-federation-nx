@@ -36,7 +36,7 @@
   },
   "private": true,
   "resolutions": {
-    "webpack": "^5.11.0"
+    "webpack": "^5.4.0"
   },
   "dependencies": {
     "@angular-architects/module-federation": "^1.2.2",
@@ -48,7 +48,7 @@
     "@angular/platform-browser": "^11.0.0",
     "@angular/platform-browser-dynamic": "^11.0.0",
     "@angular/router": "^11.0.0",
-    "@nrwl/angular": "11.0.18",
+    "@nrwl/angular": "11.0.20",
     "concurrently": "^5.3.0",
     "rxjs": "~6.5.5",
     "serve": "^11.3.2",
@@ -56,15 +56,15 @@
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1100.1",
+    "@angular-devkit/build-angular": "~0.1100.0",
     "@angular/cli": "~11.0.0",
-    "@angular/compiler-cli": "^11.0.0",
+    "@angular/compiler-cli": "~11.0.0",
     "@angular/language-service": "^11.0.0",
-    "@nrwl/cli": "11.0.18",
-    "@nrwl/cypress": "11.0.18",
-    "@nrwl/jest": "11.0.18",
-    "@nrwl/tao": "11.0.18",
-    "@nrwl/workspace": "11.0.18",
+    "@nrwl/cli": "11.0.20",
+    "@nrwl/cypress": "11.0.20",
+    "@nrwl/jest": "11.0.20",
+    "@nrwl/tao": "11.0.20",
+    "@nrwl/workspace": "11.0.20",
     "@types/jest": "26.0.8",
     "@types/node": "12.12.38",
     "codelyzer": "^6.0.0",
@@ -75,8 +75,8 @@
     "jest-preset-angular": "8.3.1",
     "prettier": "2.1.2",
     "ts-jest": "26.4.0",
-    "ts-node": "~9.1.1",
+    "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.3"
+    "typescript": "~4.0.2"
   }
 }
