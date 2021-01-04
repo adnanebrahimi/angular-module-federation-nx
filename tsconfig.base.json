@@ -16,10 +16,9 @@
       "dom"
     ],
     "paths": {
-      "@pos/weather": [
-        "libs/weather/src/index"
-      ]
-    },
-    "rootDir": "."
-  }
+      "@cac-pos/weather": ["libs/weather/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*.d.ts", "libs/**/index.ts"],
+  "exclude": ["node_modules", "tmp"]
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '@pos/weather';
+import { WeatherService } from '@cac-pos/weather';
 
 @Component({
   selector: 'cac-pos-home',
