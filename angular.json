@@ -493,18 +493,6 @@
       "sourceRoot": "libs/weather/src",
       "prefix": "cac-pos",
       "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "options": {
-            "tsConfig": "libs/weather/tsconfig.lib.json",
-            "project": "libs/weather/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/weather/tsconfig.lib.prod.json"
-            }
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
