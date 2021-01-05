@@ -1,4 +1,5 @@
 export default interface PluginsInterface {
+  uniqueName: string;
   name: string;
   componentName?: string;
   remoteName: string;
