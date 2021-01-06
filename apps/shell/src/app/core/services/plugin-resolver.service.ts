@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PluginsConfig } from '../../../configs/plugins.config';
+import PluginsConfig from '../../../configs/plugins.config';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import PluginsUtility from '../utils/plugins.utility';
 import { Router, Routes } from '@angular/router';

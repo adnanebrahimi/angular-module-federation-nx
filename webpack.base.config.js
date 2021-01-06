@@ -1,15 +1,21 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const mf = require("@angular-architects/module-federation/webpack");
 const path = require("path");
+const utils = require('./scripts/utils');
+// const angularConfigurator = require('./scripts/angular-configurator');
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, './tsconfig.base.json'),
   ['@cac-pos/weather']);
 
-module.exports = function extractConfig(uniqueName, isShell, moduleExposePath = null) {
+module.exports = function extractConfig(uniqueName, isShell=false) {
   let exposes = { }
-  exposes["./"+uniqueName] = moduleExposePath
+  const config = utils.getConfigByName(uniqueName);
+  // if (!isShell) {
+  //   angularConfigurator.updateSingle(config);
+  // }
+  exposes["./"+uniqueName] = config ? config.modulePath : ''
   return {
     output: {
       uniqueName: uniqueName

@@ -1,9 +1,10 @@
 export default interface PluginsInterface {
   uniqueName: string;
+  modulePath: string;
   name: string;
-  componentName?: string;
+  // componentName?: string;
   remoteName: string;
-  remoteFileName?: string;
+  // remoteFileName?: string;
   remotePort?: number;
-  exposedModule?: string;
+  // exposedModule?: string;
 }
