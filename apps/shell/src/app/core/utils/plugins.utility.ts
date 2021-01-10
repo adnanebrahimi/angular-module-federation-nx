@@ -7,7 +7,7 @@ export default class PluginsUtility {
     return {
       exposedModule: './' + plugin.remoteName,
       remoteEntry: environment.production ? `./plugins/${plugin.remoteName}/${plugin.remoteName}.js` :
-        `http://${window.location.hostname}:${plugin.remotePort}/${plugin.remoteName ?? 'remoteEntry.js'}`,
+        `http://${window.location.hostname}:${plugin.remotePort}/${plugin.remoteName ?? 'remoteEntry'}.js`,
       remoteName: plugin.remoteName,
     };
   }
