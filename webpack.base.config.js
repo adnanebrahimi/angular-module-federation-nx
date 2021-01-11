@@ -47,23 +47,23 @@ module.exports = function extractConfig(uniqueName, isShell=false) {
     ],
   }
 }
-function getLibraryPaths() {
-  let libs = {};
-  const tsConfig = require(tsConfigPath);
-  const rootPath = path.normalize(path.dirname(tsConfigPath));
-  for(let i of [...singletonLibraries, ...nonSingletonLibraries]) {
-    try {
-      const mappings = tsConfig.compilerOptions.paths[i];
-      //const importPath = path.normalize(path.join(rootPath,mappings[0])).replace('.ts', '');
-      const importPath = mappings[0].replace('.ts', '');
-      libs[i] = {
-        singleton: singletonLibraries.includes(i),
-        import: importPath,
-        requiredVersion: false
-      }
-    } catch (e) {
-      console.error(i + ' is not loaded', e);
-    }
-  }
-  return libs;
-}
+// function getLibraryPaths() {
+//   let libs = {};
+//   const tsConfig = require(tsConfigPath);
+//   const rootPath = path.normalize(path.dirname(tsConfigPath));
+//   for(let i of [...singletonLibraries, ...nonSingletonLibraries]) {
+//     try {
+//       const mappings = tsConfig.compilerOptions.paths[i];
+//       //const importPath = path.normalize(path.join(rootPath,mappings[0])).replace('.ts', '');
+//       const importPath = mappings[0].replace('.ts', '');
+//       libs[i] = {
+//         singleton: singletonLibraries.includes(i),
+//         import: importPath,
+//         requiredVersion: false
+//       }
+//     } catch (e) {
+//       console.error(i + ' is not loaded', e);
+//     }
+//   }
+//   return libs;
+// }
