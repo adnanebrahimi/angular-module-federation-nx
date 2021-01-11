@@ -53,6 +53,12 @@
     },
     "weather": {
       "tags": []
+    },
+    "plugin": {
+      "tags": []
+    },
+    "plugin-loader": {
+      "tags": []
     }
   }
 }

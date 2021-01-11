@@ -3,14 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import { NewsComponentComponent } from './features/home-three/news-component/news-component.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NewsComponentComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{ path: 'HomeThree', loadChildren: () => import('./features/home-three/home-three.module').then(m => m.HomeThreeModule) }], { initialNavigation: 'enabled' }),
+    RouterModule.forChild([
+      {
+        path: 'HomeThree',
+        loadChildren: () => import('./features/home-three/home-three.module').then(m => m.HomeThreeModule)
+      }]),
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [
+    NewsComponentComponent
+  ]
 })
 export class AppModule {}

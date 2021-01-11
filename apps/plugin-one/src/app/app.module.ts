@@ -8,7 +8,11 @@ import { RouterModule } from '@angular/router';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{ path: 'HomeOne', loadChildren: () => import('./features/home-one/home-one.module').then(m => m.HomeOneModule) }], { initialNavigation: 'enabled' }),
+    RouterModule.forChild([
+      {
+        path: '',
+        loadChildren: () => import('./features/home-one/home-one.module').then(m => m.HomeOneModule)
+      }]),
   ],
   providers: [],
   bootstrap: [AppComponent],

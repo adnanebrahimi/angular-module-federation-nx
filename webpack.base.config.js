@@ -7,7 +7,7 @@ const utils = require('./scripts/utils');
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, './tsconfig.base.json'),
-  ['@cac-pos/weather']);
+  ['@cac-pos/weather', '@cac-pos/plugin-loader']);
 
 module.exports = function extractConfig(uniqueName, isShell=false) {
   let exposes = { }
@@ -15,7 +15,8 @@ module.exports = function extractConfig(uniqueName, isShell=false) {
   // if (!isShell) {
   //   angularConfigurator.updateSingle(config);
   // }
-  exposes["./"+uniqueName] = config ? config.modulePath : ''
+  const kebabName = utils.kebabize(uniqueName);
+  exposes["./"+uniqueName] = config ? `./apps/${kebabName}/src/app/app.module.ts` : ''
   return {
     output: {
       uniqueName: uniqueName

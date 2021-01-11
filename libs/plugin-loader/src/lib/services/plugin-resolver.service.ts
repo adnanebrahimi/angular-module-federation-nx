@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import PluginsConfig from '../../../configs/plugins.config';
+import { Component, Injectable, NgModule } from '@angular/core';
+import PluginsConfig from '../../configs/plugins.config';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import PluginsUtility from '../utils/plugins.utility';
 import { Router, Routes } from '@angular/router';
@@ -12,17 +12,19 @@ import { BehaviorSubject } from 'rxjs';
 export class PluginResolverService {
   private loadedPlugins: any = {};
   private loadedConfigs: PluginsInterface[] = [];
+  private loadedComponents: any = {};
   private _isLoadingPlugins = new BehaviorSubject<boolean>(false);
   private _isLoaded = new BehaviorSubject<boolean>(false);
   private _initRoutes?: Routes;
   constructor() {}
 
-  async loadPlugins() {
+  async loadPlugins(production= false) {
     this._isLoadingPlugins.next(true);
     for (const i of PluginsConfig) {
       try {
-        const module = await loadRemoteModule(PluginsUtility.convertToRemoteModuleOptions(i));
-        this.checkEntries(module, i);
+        const plugin = await loadRemoteModule(PluginsUtility.convertToRemoteModuleOptions(i, production));
+        this.checkEntries(plugin, i);
+        this.loadExportedComponents(plugin);
       } catch (e) {
         console.error(`Plugin "${i.name}" not found`, e);
       }
@@ -30,11 +32,39 @@ export class PluginResolverService {
     this._isLoadingPlugins.next(false);
     this._isLoaded.next(true);
   }
-  checkEntries(module: any, config: PluginsInterface) {
+  checkEntries(plugin: any, config: PluginsInterface) {
     if (!this.loadedPlugins[config.remoteName]) {
-      this.loadedPlugins[config.remoteName] = module;
+      this.loadedPlugins[config.remoteName] = plugin;
       this.loadedConfigs.push(config);
     }
+  }
+  loadExportedComponents(plugin: any) {
+    const appModule = this.getModule(plugin);
+    try{
+      const args = this.getModuleArgs(appModule);
+      if (args.exports) {
+        for (let i of args.exports) {
+          const compArgs = this.getComponentArgs(i);
+          const comp = {};
+          comp[compArgs.selector] = i;
+          this.loadedComponents = {...this.loadedComponents, ...comp};
+        }
+      }
+    } catch (e) {
+      console.log('Component load error', e);
+    }
+
+  }
+  getModuleArgs(module: any): NgModule | undefined {
+    try{
+      return module.decorators[0].args[0];
+    } catch (e) {
+      console.log('Args loading error', e);
+      return undefined;
+    }
+  }
+  getComponentArgs(component: any): Component | undefined {
+    return this.getModuleArgs(component);
   }
   buildRoutes(currentPath: string, router: Router) {
     // const pluginRoutes: Routes = this.loadedConfigs.map(i => ({
@@ -84,5 +114,8 @@ export class PluginResolverService {
   getModule(plugin: any) {
     let key = Object.keys(plugin)[0];
     return plugin[key];
+  }
+  getComponent(selector: string): any | undefined {
+    return this.loadedComponents[selector];
   }
 }

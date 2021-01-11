@@ -1,4 +1,4 @@
-const pluginsConfig = require('../apps/shell/src/configs/plugins.config');
+const pluginsConfig = require('../libs/plugin-loader/src/configs/plugins.config');
 
 function getConfig() {
   return pluginsConfig

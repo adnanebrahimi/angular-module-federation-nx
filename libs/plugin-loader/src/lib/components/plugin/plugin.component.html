@@ -1,0 +1,6 @@
+<ng-template #container>
+
+</ng-template>
+<ng-container *ngIf='pluginResolver.isLoadingPlugins | async as isLoading'>
+  <p *ngIf='isLoading'>Loading plugins...</p>
+</ng-container>

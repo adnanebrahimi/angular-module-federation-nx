@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PluginResolverService } from '../../core/services/plugin-resolver.service';
+import { PluginResolverService } from '@cac-pos/plugin-loader';
 import { Router } from '@angular/router';
 
 @Component({

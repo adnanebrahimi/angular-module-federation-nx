@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeThreeComponent } from './home-three.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeThreeComponent }
 ];
@@ -13,6 +12,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+
 })
 export class HomeThreeModule { }

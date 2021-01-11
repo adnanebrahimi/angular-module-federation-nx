@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PluginResolverService } from './core/services/plugin-resolver.service';
+import { PluginResolverService } from '@cac-pos/plugin-loader';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'cac-pos-root',
@@ -10,6 +11,6 @@ export class AppComponent implements OnInit{
   constructor(private pluginResolver: PluginResolverService) {
   }
   ngOnInit() {
-    this.pluginResolver.loadPlugins();
+    this.pluginResolver.loadPlugins(environment.production);
   }
 }
