@@ -11,7 +11,7 @@ import { NewsComponentComponent } from './features/home-three/news-component/new
     BrowserModule,
     RouterModule.forChild([
       {
-        path: 'HomeThree',
+        path: '',
         loadChildren: () => import('./features/home-three/home-three.module').then(m => m.HomeThreeModule)
       }]),
   ],

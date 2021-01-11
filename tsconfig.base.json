@@ -13,8 +13,8 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@cac-pos/weather": ["libs/weather/src/index.ts"],
-      "@cac-pos/plugin-loader": ["libs/plugin-loader/src/index.ts"]
+      "@cac-pos/weather": ["libs/weather/src/index"],
+      "@cac-pos/plugin-loader": ["libs/plugin-loader/src/index"]
     }
   },
   "include": ["src/**/*.d.ts", "libs/**/index.ts"],

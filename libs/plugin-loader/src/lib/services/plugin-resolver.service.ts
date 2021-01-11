@@ -5,6 +5,7 @@ import PluginsUtility from '../utils/plugins.utility';
 import { Router, Routes } from '@angular/router';
 import PluginsInterface from '../interfaces/plugins.interface';
 import { BehaviorSubject } from 'rxjs';
+import LoadOptionsInterface from '../interfaces/load-options.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,11 @@ export class PluginResolverService {
   private _initRoutes?: Routes;
   constructor() {}
 
-  async loadPlugins(production= false) {
+  async loadPlugins(options: LoadOptionsInterface) {
     this._isLoadingPlugins.next(true);
     for (const i of PluginsConfig) {
       try {
-        const plugin = await loadRemoteModule(PluginsUtility.convertToRemoteModuleOptions(i, production));
+        const plugin = await loadRemoteModule(PluginsUtility.convertToRemoteModuleOptions(i, options.production));
         this.checkEntries(plugin, i);
         this.loadExportedComponents(plugin);
       } catch (e) {
@@ -31,14 +32,17 @@ export class PluginResolverService {
     }
     this._isLoadingPlugins.next(false);
     this._isLoaded.next(true);
+    if (options.router && options.routePath) {
+      this.buildRoutes(options.routePath, options.router);
+    }
   }
-  checkEntries(plugin: any, config: PluginsInterface) {
+  private checkEntries(plugin: any, config: PluginsInterface) {
     if (!this.loadedPlugins[config.remoteName]) {
       this.loadedPlugins[config.remoteName] = plugin;
       this.loadedConfigs.push(config);
     }
   }
-  loadExportedComponents(plugin: any) {
+  private loadExportedComponents(plugin: any) {
     const appModule = this.getModule(plugin);
     try{
       const args = this.getModuleArgs(appModule);
@@ -55,7 +59,7 @@ export class PluginResolverService {
     }
 
   }
-  getModuleArgs(module: any): NgModule | undefined {
+  private getModuleArgs(module: any): NgModule | undefined {
     try{
       return module.decorators[0].args[0];
     } catch (e) {
@@ -63,10 +67,10 @@ export class PluginResolverService {
       return undefined;
     }
   }
-  getComponentArgs(component: any): Component | undefined {
+  private getComponentArgs(component: any): Component | undefined {
     return this.getModuleArgs(component);
   }
-  buildRoutes(currentPath: string, router: Router) {
+  private buildRoutes(currentPath: string, router: Router) {
     // const pluginRoutes: Routes = this.loadedConfigs.map(i => ({
     //   path: i.remoteName,
     //   loadChildren: () => this.getModule(i)[i.componentName]

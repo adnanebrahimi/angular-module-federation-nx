@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PluginResolverService } from '@cac-pos/plugin-loader';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'cac-pos-plugins-list',
@@ -8,16 +7,8 @@ import { Router } from '@angular/router';
   // styleUrls: ['./plugins-list.component.scss']
 })
 export class PluginsListComponent implements OnInit {
-  constructor(public pluginResolver: PluginResolverService, private router: Router) {
-    pluginResolver.isLoaded.subscribe(v => {
-      if (v) {
-        pluginResolver.buildRoutes('plugins', router);
-      }
-    });
-  }
+  constructor(public pluginResolver: PluginResolverService) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
 }

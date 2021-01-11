@@ -4,10 +4,14 @@ const path = require("path");
 const utils = require('./scripts/utils');
 // const angularConfigurator = require('./scripts/angular-configurator');
 
+const singletonLibraries = ['@cac-pos/weather', '@cac-pos/plugin-loader'];
+const nonSingletonLibraries = [];
+const tsConfigPath = path.join(__dirname, './tsconfig.base.json')
+
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
-  path.join(__dirname, './tsconfig.base.json'),
-  ['@cac-pos/weather', '@cac-pos/plugin-loader']);
+  tsConfigPath,
+  [...singletonLibraries, ...nonSingletonLibraries]);
 
 module.exports = function extractConfig(uniqueName, isShell=false) {
   let exposes = { }
@@ -42,4 +46,24 @@ module.exports = function extractConfig(uniqueName, isShell=false) {
       sharedMappings.getPlugin(),
     ],
   }
+}
+function getLibraryPaths() {
+  let libs = {};
+  const tsConfig = require(tsConfigPath);
+  const rootPath = path.normalize(path.dirname(tsConfigPath));
+  for(let i of [...singletonLibraries, ...nonSingletonLibraries]) {
+    try {
+      const mappings = tsConfig.compilerOptions.paths[i];
+      //const importPath = path.normalize(path.join(rootPath,mappings[0])).replace('.ts', '');
+      const importPath = mappings[0].replace('.ts', '');
+      libs[i] = {
+        singleton: singletonLibraries.includes(i),
+        import: importPath,
+        requiredVersion: false
+      }
+    } catch (e) {
+      console.error(i + ' is not loaded', e);
+    }
+  }
+  return libs;
 }
