@@ -1,14 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { NewsComponentComponent } from './features/home-three/news-component/news-component.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, NewsComponentComponent],
   imports: [
-    BrowserModule,
+    CommonModule,
     RouterModule.forChild([
       {
         path: '',
