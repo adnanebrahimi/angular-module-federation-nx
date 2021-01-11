@@ -40,6 +40,10 @@ export class PluginComponent implements OnDestroy, AfterViewInit{
 
   loadComponent() {
     const component = this.pluginResolver.getComponent(this.name);
+    if (!component) {
+      console.error(`Component : "${this.name}" not found.`);
+      return;
+    }
     this.container.clear();
     const compFactory = this.factory.resolveComponentFactory(component);
     this.container.createComponent(compFactory);

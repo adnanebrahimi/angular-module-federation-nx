@@ -34,7 +34,9 @@ export class PluginResolverService {
     this._isLoaded.next(true);
     if (options.router && options.routePath) {
       this.buildRoutes(options.routePath, options.router);
+      console.log('New Routes : ', options.router.config);
     }
+    console.log('Shared components :', this.loadedComponents);
   }
   private checkEntries(plugin: any, config: PluginsInterface) {
     if (!this.loadedPlugins[config.remoteName]) {
@@ -98,7 +100,6 @@ export class PluginResolverService {
       this._initRoutes = router.config;
     }
     router.resetConfig([...this._initRoutes, ...pluginRoutes]);
-    console.log('New Routes : ', router.config);
   }
   get plugins() {
     return this.loadedPlugins;
