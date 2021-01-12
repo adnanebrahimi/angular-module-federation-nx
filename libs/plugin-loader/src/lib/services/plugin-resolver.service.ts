@@ -17,9 +17,11 @@ export class PluginResolverService {
   private _isLoadingPlugins = new BehaviorSubject<boolean>(false);
   private _isLoaded = new BehaviorSubject<boolean>(false);
   private _initRoutes?: Routes;
+  private _options: LoadOptionsInterface;
   constructor() {}
 
   async loadPlugins(options: LoadOptionsInterface) {
+    this._options = options;
     this._isLoadingPlugins.next(true);
     for (const i of PluginsConfig) {
       try {
@@ -45,32 +47,33 @@ export class PluginResolverService {
     }
   }
   private loadExportedComponents(plugin: any) {
-    const appModule = this.getModule(plugin);
-    try{
-      const args = this.getModuleArgs(appModule);
-      if (args.exports) {
-        for (let i of args.exports) {
-          const compArgs = this.getComponentArgs(i);
-          const comp = {};
+    const module = this.getModule(plugin);
+    this.addExportedComponents(module);
+  }
+  private addExportedComponents(module: any) {
+    try {
+      let args = this.getModuleArgs(module) as NgModule;
+      for (let i of args.exports) {
+        let compArgs = this.getModuleArgs(i);
+        if (compArgs.exports) {
+          this.addExportedComponents(i);
+        } else {
+          let comp = {};
           comp[compArgs.selector] = i;
-          this.loadedComponents = {...this.loadedComponents, ...comp};
+          this.loadedComponents = { ...this.loadedComponents, ...comp };
         }
       }
-    } catch (e) {
+    }catch (e) {
       console.log('Component load error', e);
     }
-
   }
-  private getModuleArgs(module: any): NgModule | undefined {
+  private getModuleArgs(module: any): any {
     try{
       return module.decorators[0].args[0];
     } catch (e) {
       console.log('Args loading error', e);
       return undefined;
     }
-  }
-  private getComponentArgs(component: any): Component | undefined {
-    return this.getModuleArgs(component);
   }
   private buildRoutes(currentPath: string, router: Router) {
     // const pluginRoutes: Routes = this.loadedConfigs.map(i => ({

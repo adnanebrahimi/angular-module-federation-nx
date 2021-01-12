@@ -135,6 +135,7 @@
             "main": "apps/plugin-one/src/main.ts",
             "polyfills": "apps/plugin-one/src/polyfills.ts",
             "tsConfig": "apps/plugin-one/tsconfig.app.json",
+            "sourceMap": false,
             "aot": true,
             "assets": [
               "apps/plugin-one/src/favicon.ico",
@@ -258,6 +259,7 @@
             "main": "apps/plugin-two/src/main.ts",
             "polyfills": "apps/plugin-two/src/polyfills.ts",
             "tsConfig": "apps/plugin-two/tsconfig.app.json",
+            "sourceMap": false,
             "aot": true,
             "assets": [
               "apps/plugin-two/src/favicon.ico",
@@ -381,6 +383,7 @@
             "main": "apps/three/src/main.ts",
             "polyfills": "apps/three/src/polyfills.ts",
             "tsConfig": "apps/three/tsconfig.app.json",
+            "sourceMap": false,
             "aot": true,
             "assets": ["apps/three/src/favicon.ico", "apps/three/src/assets"],
             "styles": ["apps/three/src/styles.scss"],

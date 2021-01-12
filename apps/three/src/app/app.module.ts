@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { NewsComponentComponent } from './features/home-three/news-component/news-component.component';
 import { CommonModule } from '@angular/common';
+import { HomeThreeModule } from './features/home-three/home-three.module';
 
 @NgModule({
-  declarations: [AppComponent, NewsComponentComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
   providers: [],
   bootstrap: [AppComponent],
   exports: [
-    NewsComponentComponent
+    HomeThreeModule
   ]
 })
 export class AppModule {}
