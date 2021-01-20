@@ -1,4 +1,4 @@
-const angularConfig = require('../angular.json');
+let angularConfig = require('../angular.json');
 const fs = require('fs')
 const utils = require("./utils");
 
@@ -11,16 +11,19 @@ function updateAll() {
   }
 }
 function updateSingle(config) {
-  let edited = false;
-  const angConfig = angularConfig.projects[utils.kebabize(config.uniqueName)];
-  if (angConfig.architect.serve.options.port !== config.remotePort) {
-    edited = true;
-    angConfig.architect.serve.options.port = config.remotePort;
-    fs.writeFileSync('./angular.json', JSON.stringify(angularConfig, null, 2));
-  }
-  if (edited) {
+  let newAngularConfig = JSON.parse(JSON.stringify(angularConfig));
+  configProject(newAngularConfig.projects[utils.kebabize(config.uniqueName)], config);
+  if (JSON.stringify(angularConfig) !== JSON.stringify(newAngularConfig)) {
     console.log(`${config.uniqueName} configurations updated.`);
+    fs.writeFileSync('./angular.json', JSON.stringify(newAngularConfig, null, 2));
+    angularConfig = newAngularConfig;
   }
+}
+function configProject(angular ,config) {
+  angular.architect.build.builder = '@angular-builders/custom-webpack:browser'
+  angular.architect.build.options.plugin = "~scripts/webpack-configurator.ts"
+  angular.architect.build.configurations.production.plugin = "~scripts/webpack-configurator.ts"
+  angular.architect.serve.options.port = config.remotePort;
 }
 module.exports = {
   updateSingle,

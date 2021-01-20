@@ -41,8 +41,8 @@ export class PluginResolverService {
     console.log('Shared components :', this.loadedComponents);
   }
   private checkEntries(plugin: any, config: PluginsInterface) {
-    if (!this.loadedPlugins[config.remoteName]) {
-      this.loadedPlugins[config.remoteName] = plugin;
+    if (!this.loadedPlugins[config.uniqueName]) {
+      this.loadedPlugins[config.uniqueName] = plugin;
       this.loadedConfigs.push(config);
     }
   }
@@ -52,15 +52,28 @@ export class PluginResolverService {
   }
   private addExportedComponents(module: any) {
     try {
-      let args = this.getModuleArgs(module) as NgModule;
-      for (let i of args.exports) {
-        let compArgs = this.getModuleArgs(i);
-        if (compArgs.exports) {
-          this.addExportedComponents(i);
-        } else {
-          let comp = {};
-          comp[compArgs.selector] = i;
-          this.loadedComponents = { ...this.loadedComponents, ...comp };
+      if (this._options.production) {
+        let args = module.ɵmod;
+        for (let i of args.exports) {
+          if (i.ɵmod) {
+            this.addExportedComponents(i);
+          } else {
+            let comp = {};
+            comp[i.ɵcmp.selectors[0][0]] = i;
+            this.loadedComponents = { ...this.loadedComponents, ...comp };
+          }
+        }
+      } else {
+        let args = this.getModuleArgs(module) as NgModule;
+        for (let i of args.exports) {
+          let compArgs = this.getModuleArgs(i);
+          if (compArgs.exports) {
+            this.addExportedComponents(i);
+          } else {
+            let comp = {};
+            comp[compArgs.selector] = i;
+            this.loadedComponents = { ...this.loadedComponents, ...comp };
+          }
         }
       }
     }catch (e) {
@@ -76,27 +89,8 @@ export class PluginResolverService {
     }
   }
   private buildRoutes(currentPath: string, router: Router) {
-    // const pluginRoutes: Routes = this.loadedConfigs.map(i => ({
-    //   path: i.remoteName,
-    //   loadChildren: () => this.getModule(i)[i.componentName]
-    // }));
-    // let newConfig = router.config;
-    // for (const i of newConfig) {
-    //   if (i.path === currentPath) {
-    //     // @ts-ignore
-    //     const loadedConfig = i._loadedConfig;
-    //     if (!this._initRoutes) {
-    //       this._initRoutes = loadedConfig.routes;
-    //     }
-    //     loadedConfig.routes = [...this._initRoutes, ...pluginRoutes];
-    //     break;
-    //   }
-    // }
-    // router.resetConfig(newConfig);
-    // console.log('New Routes : ', router.config);
-
     const pluginRoutes: Routes = this.loadedConfigs.map(i => ({
-      path: `${currentPath}/${i.remoteName}`,
+      path: `${currentPath}/${i.uniqueName}`,
       loadChildren: () => this.getModule(this.getPlugin(i))
     }));
     if (!this._initRoutes) {
@@ -117,7 +111,7 @@ export class PluginResolverService {
     return this._isLoaded;
   }
   getPlugin(config: PluginsInterface) {
-    return this.loadedPlugins[config.remoteName];
+    return this.loadedPlugins[config.uniqueName];
   }
   getModule(plugin: any) {
     let key = Object.keys(plugin)[0];

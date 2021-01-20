@@ -32,7 +32,7 @@
 </div>
 <ng-template #loaded>
   <div class='plugins-list'>
-    <div [routerLink]='[i.remoteName]' class='plugin' *ngFor='let i of pluginResolver.configs'>
+    <div [routerLink]='[i.uniqueName]' class='plugin' *ngFor='let i of pluginResolver.configs'>
       {{ i.name }}
     </div>
   </div>
