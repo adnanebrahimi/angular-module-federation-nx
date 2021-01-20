@@ -143,7 +143,7 @@
       "prefix": "one",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/pluginOne",
             "index": "apps/plugin-one/src/index.html",
@@ -281,7 +281,7 @@
       "prefix": "two",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/pluginTwo",
             "index": "apps/plugin-two/src/index.html",
@@ -419,7 +419,7 @@
       "prefix": "three",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/three",
             "index": "apps/three/src/index.html",

@@ -20,7 +20,7 @@ function updateSingle(config) {
   }
 }
 function configProject(angular ,config) {
-  angular.architect.build.builder = '@angular-builders/custom-webpack:browser'
+  angular.architect.build.builder = 'ngx-build-plus:browser'
   angular.architect.build.options.plugin = "~scripts/webpack-configurator.ts"
   angular.architect.build.configurations.production.plugin = "~scripts/webpack-configurator.ts"
   angular.architect.serve.options.port = config.remotePort;
