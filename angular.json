@@ -143,7 +143,7 @@
       "prefix": "one",
       "architect": {
         "build": {
-          "builder": "ngx-build-plus:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/apps/pluginOne",
             "index": "apps/plugin-one/src/index.html",
@@ -160,7 +160,8 @@
               "apps/plugin-one/src/styles.scss"
             ],
             "scripts": [],
-            "extraWebpackConfig": "apps/plugin-one/webpack.config.js"
+            "extraWebpackConfig": "apps/plugin-one/webpack.config.js",
+            "plugin": "~scripts/webpack-configurator.ts"
           },
           "configurations": {
             "production": {
@@ -189,7 +190,8 @@
                   "maximumError": "10kb"
                 }
               ],
-              "extraWebpackConfig": "apps/plugin-one/webpack.prod.config.js"
+              "extraWebpackConfig": "apps/plugin-one/webpack.prod.config.js",
+              "plugin": "~scripts/webpack-configurator.ts"
             }
           }
         },
@@ -279,7 +281,7 @@
       "prefix": "two",
       "architect": {
         "build": {
-          "builder": "ngx-build-plus:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/apps/pluginTwo",
             "index": "apps/plugin-two/src/index.html",
@@ -296,7 +298,8 @@
               "apps/plugin-two/src/styles.scss"
             ],
             "scripts": [],
-            "extraWebpackConfig": "apps/plugin-two/webpack.config.js"
+            "extraWebpackConfig": "apps/plugin-two/webpack.config.js",
+            "plugin": "~scripts/webpack-configurator.ts"
           },
           "configurations": {
             "production": {
@@ -325,7 +328,8 @@
                   "maximumError": "10kb"
                 }
               ],
-              "extraWebpackConfig": "apps/plugin-two/webpack.prod.config.js"
+              "extraWebpackConfig": "apps/plugin-two/webpack.prod.config.js",
+              "plugin": "~scripts/webpack-configurator.ts"
             }
           }
         },
@@ -415,7 +419,7 @@
       "prefix": "three",
       "architect": {
         "build": {
-          "builder": "ngx-build-plus:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/apps/three",
             "index": "apps/three/src/index.html",
@@ -432,7 +436,8 @@
               "apps/three/src/styles.scss"
             ],
             "scripts": [],
-            "extraWebpackConfig": "apps/three/webpack.config.js"
+            "extraWebpackConfig": "apps/three/webpack.config.js",
+            "plugin": "~scripts/webpack-configurator.ts"
           },
           "configurations": {
             "production": {
@@ -461,7 +466,8 @@
                   "maximumError": "10kb"
                 }
               ],
-              "extraWebpackConfig": "apps/three/webpack.prod.config.js"
+              "extraWebpackConfig": "apps/three/webpack.prod.config.js",
+              "plugin": "~scripts/webpack-configurator.ts"
             }
           }
         },
