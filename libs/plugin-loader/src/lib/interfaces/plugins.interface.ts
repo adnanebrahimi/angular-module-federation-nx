@@ -7,5 +7,5 @@ export default interface PluginsInterface {
   // remoteFileName?: string;
   remotePort?: number;
   // exposedModule?: string;
-  // components?: [];
+  components?: [];
 }

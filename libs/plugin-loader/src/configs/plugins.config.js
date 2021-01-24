@@ -13,6 +13,9 @@ const PluginsConfig = [
     uniqueName: 'three',
     name: 'Plugin Three',
     remotePort: 4203,
+    components: [
+      'three-news-component'
+    ]
   },
 ];
 module.exports = PluginsConfig

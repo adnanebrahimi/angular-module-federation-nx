@@ -1,5 +1,6 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const mf = require("@angular-architects/module-federation/webpack");
+const fs = require('fs');
 const path = require("path");
 const utils = require('./scripts/utils');
 // const angularConfigurator = require('./scripts/angular-configurator');
@@ -13,6 +14,8 @@ sharedMappings.register(
   tsConfigPath,
   [...singletonLibraries, ...nonSingletonLibraries]);
 
+let componentFileList = [];
+
 module.exports = function extractConfig(uniqueName, isShell=false) {
   let exposes = { }
   const config = utils.getConfigByName(uniqueName);
@@ -21,6 +24,14 @@ module.exports = function extractConfig(uniqueName, isShell=false) {
   // }
   const kebabName = utils.kebabize(uniqueName);
   exposes["./"+uniqueName] = config ? `./apps/${kebabName}/src/app/app.module.ts` : ''
+  if (!isShell) {
+    if (config.components) {
+      componentFileList = loadComponentsFileList(`./apps/${kebabName}/src/app/`)
+      for (const i of config.components) {
+        exposes['./' + i] = getComponentPath(i);
+      }
+    }
+  }
   return {
     output: {
       uniqueName: uniqueName
@@ -46,6 +57,30 @@ module.exports = function extractConfig(uniqueName, isShell=false) {
       sharedMappings.getPlugin(),
     ],
   }
+}
+function getComponentPath(selector) {
+  for(let i of componentFileList) {
+    const data = fs.readFileSync(i)
+    if (data.includes(`selector: '${selector}'`)) {
+      componentFileList = componentFileList.filter(v => v !== i);
+      return './' + i;
+    }
+  }
+  throw new Error('Wrong selector: '+selector+', please verify it.');
+}
+function loadComponentsFileList(filePath) {
+  let paths = [];
+  fs.readdirSync(filePath).forEach(file => {
+    let newPath = path.join(filePath, file);
+    if (fs.lstatSync(newPath).isDirectory()){
+      paths.push(...loadComponentsFileList(newPath))
+    } else {
+      if (newPath.substr(newPath.indexOf('.')) === '.component.ts') {
+        paths.push(newPath)
+      }
+    }
+  });
+  return paths;
 }
 // function getLibraryPaths() {
 //   let libs = {};

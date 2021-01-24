@@ -27,7 +27,17 @@ export class PluginResolverService {
       try {
         const plugin = await loadRemoteModule(PluginsUtility.convertToRemoteModuleOptions(i, options.production));
         this.checkEntries(plugin, i);
-        this.loadExportedComponents(plugin);
+        // this.loadExportedComponents(plugin);
+        if (i.components) {
+          for (const name of i.components) {
+            try {
+              const component = await loadRemoteModule(PluginsUtility.convertToRemoteModuleOptions(i, options.production, name));
+              this.loadComponent(name, component);
+            } catch (e) {
+              console.error(`Component "${name}" not found`);
+            }
+          }
+        }
       } catch (e) {
         console.error(`Plugin "${i.name}" not found`, e);
       }
@@ -45,6 +55,12 @@ export class PluginResolverService {
       this.loadedPlugins[config.uniqueName] = plugin;
       this.loadedConfigs.push(config);
     }
+  }
+  private loadComponent(selector: string, component: any) {
+    const componentModule = this.getModule(component);
+    let comp = {};
+    comp[selector] = componentModule;
+    this.loadedComponents = { ...this.loadedComponents, ...comp };
   }
   private loadExportedComponents(plugin: any) {
     const module = this.getModule(plugin);
@@ -88,6 +104,7 @@ export class PluginResolverService {
       return undefined;
     }
   }
+
   private buildRoutes(currentPath: string, router: Router) {
     const pluginRoutes: Routes = this.loadedConfigs.map(i => ({
       path: `${currentPath}/${i.uniqueName}`,
